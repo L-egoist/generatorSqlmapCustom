@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ly.mapper.Og001Mapper" >
+  <resultMap id="BaseResultMap" type="com.ly.model.Og001" >
+    <result column="JGDM" property="jgdm" jdbcType="VARCHAR" />
+    <result column="CSZXDM" property="cszxdm" jdbcType="VARCHAR" />
+    <result column="JGMC" property="jgmc" jdbcType="VARCHAR" />
+    <result column="JGJC" property="jgjc" jdbcType="VARCHAR" />
+    <result column="JGJCE" property="jgjce" jdbcType="VARCHAR" />
+    <result column="JGDZ" property="jgdz" jdbcType="VARCHAR" />
+    <result column="LXDH" property="lxdh" jdbcType="VARCHAR" />
+    <result column="YOUBIAN" property="youbian" jdbcType="VARCHAR" />
+    <result column="JGLX" property="jglx" jdbcType="VARCHAR" />
+    <result column="JGXZ" property="jgxz" jdbcType="VARCHAR" />
+    <result column="JGSX" property="jgsx" jdbcType="VARCHAR" />
+    <result column="JGZT" property="jgzt" jdbcType="VARCHAR" />
+    <result column="JGKYRQ" property="jgkyrq" jdbcType="DATE" />
+    <result column="JGJYRQ" property="jgjyrq" jdbcType="DATE" />
+    <result column="SXH" property="sxh" jdbcType="DECIMAL" />
+    <result column="JBJGDM" property="jbjgdm" jdbcType="VARCHAR" />
+    <result column="JBGYDM" property="jbgydm" jdbcType="VARCHAR" />
+    <result column="JBRQ" property="jbrq" jdbcType="DATE" />
+    <result column="YXBZ" property="yxbz" jdbcType="VARCHAR" />
+    <result column="BYZD1" property="byzd1" jdbcType="VARCHAR" />
+    <result column="BYZD2" property="byzd2" jdbcType="DECIMAL" />
+    <result column="BYZD3" property="byzd3" jdbcType="DATE" />
+    <result column="BYZD4" property="byzd4" jdbcType="VARCHAR" />
+    <result column="BYZD5" property="byzd5" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    JGDM, CSZXDM, JGMC, JGJC, JGJCE, JGDZ, LXDH, YOUBIAN, JGLX, JGXZ, JGSX, JGZT, JGKYRQ, 
+    JGJYRQ, SXH, JBJGDM, JBGYDM, JBRQ, YXBZ, BYZD1, BYZD2, BYZD3, BYZD4, BYZD5
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ly.model.Og001Example" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from OG001
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.ly.model.Og001Example" >
+    delete from OG001
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ly.model.Og001" >
+    insert into OG001 (JGDM, CSZXDM, JGMC, 
+      JGJC, JGJCE, JGDZ, 
+      LXDH, YOUBIAN, JGLX, 
+      JGXZ, JGSX, JGZT, JGKYRQ, 
+      JGJYRQ, SXH, JBJGDM, JBGYDM, 
+      JBRQ, YXBZ, BYZD1, BYZD2, 
+      BYZD3, BYZD4, BYZD5)
+    values (#{jgdm,jdbcType=VARCHAR}, #{cszxdm,jdbcType=VARCHAR}, #{jgmc,jdbcType=VARCHAR}, 
+      #{jgjc,jdbcType=VARCHAR}, #{jgjce,jdbcType=VARCHAR}, #{jgdz,jdbcType=VARCHAR}, 
+      #{lxdh,jdbcType=VARCHAR}, #{youbian,jdbcType=VARCHAR}, #{jglx,jdbcType=VARCHAR}, 
+      #{jgxz,jdbcType=VARCHAR}, #{jgsx,jdbcType=VARCHAR}, #{jgzt,jdbcType=VARCHAR}, #{jgkyrq,jdbcType=DATE}, 
+      #{jgjyrq,jdbcType=DATE}, #{sxh,jdbcType=DECIMAL}, #{jbjgdm,jdbcType=VARCHAR}, #{jbgydm,jdbcType=VARCHAR}, 
+      #{jbrq,jdbcType=DATE}, #{yxbz,jdbcType=VARCHAR}, #{byzd1,jdbcType=VARCHAR}, #{byzd2,jdbcType=DECIMAL}, 
+      #{byzd3,jdbcType=DATE}, #{byzd4,jdbcType=VARCHAR}, #{byzd5,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ly.model.Og001" >
+    insert into OG001
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="jgdm != null" >
+        JGDM,
+      </if>
+      <if test="cszxdm != null" >
+        CSZXDM,
+      </if>
+      <if test="jgmc != null" >
+        JGMC,
+      </if>
+      <if test="jgjc != null" >
+        JGJC,
+      </if>
+      <if test="jgjce != null" >
+        JGJCE,
+      </if>
+      <if test="jgdz != null" >
+        JGDZ,
+      </if>
+      <if test="lxdh != null" >
+        LXDH,
+      </if>
+      <if test="youbian != null" >
+        YOUBIAN,
+      </if>
+      <if test="jglx != null" >
+        JGLX,
+      </if>
+      <if test="jgxz != null" >
+        JGXZ,
+      </if>
+      <if test="jgsx != null" >
+        JGSX,
+      </if>
+      <if test="jgzt != null" >
+        JGZT,
+      </if>
+      <if test="jgkyrq != null" >
+        JGKYRQ,
+      </if>
+      <if test="jgjyrq != null" >
+        JGJYRQ,
+      </if>
+      <if test="sxh != null" >
+        SXH,
+      </if>
+      <if test="jbjgdm != null" >
+        JBJGDM,
+      </if>
+      <if test="jbgydm != null" >
+        JBGYDM,
+      </if>
+      <if test="jbrq != null" >
+        JBRQ,
+      </if>
+      <if test="yxbz != null" >
+        YXBZ,
+      </if>
+      <if test="byzd1 != null" >
+        BYZD1,
+      </if>
+      <if test="byzd2 != null" >
+        BYZD2,
+      </if>
+      <if test="byzd3 != null" >
+        BYZD3,
+      </if>
+      <if test="byzd4 != null" >
+        BYZD4,
+      </if>
+      <if test="byzd5 != null" >
+        BYZD5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="jgdm != null" >
+        #{jgdm,jdbcType=VARCHAR},
+      </if>
+      <if test="cszxdm != null" >
+        #{cszxdm,jdbcType=VARCHAR},
+      </if>
+      <if test="jgmc != null" >
+        #{jgmc,jdbcType=VARCHAR},
+      </if>
+      <if test="jgjc != null" >
+        #{jgjc,jdbcType=VARCHAR},
+      </if>
+      <if test="jgjce != null" >
+        #{jgjce,jdbcType=VARCHAR},
+      </if>
+      <if test="jgdz != null" >
+        #{jgdz,jdbcType=VARCHAR},
+      </if>
+      <if test="lxdh != null" >
+        #{lxdh,jdbcType=VARCHAR},
+      </if>
+      <if test="youbian != null" >
+        #{youbian,jdbcType=VARCHAR},
+      </if>
+      <if test="jglx != null" >
+        #{jglx,jdbcType=VARCHAR},
+      </if>
+      <if test="jgxz != null" >
+        #{jgxz,jdbcType=VARCHAR},
+      </if>
+      <if test="jgsx != null" >
+        #{jgsx,jdbcType=VARCHAR},
+      </if>
+      <if test="jgzt != null" >
+        #{jgzt,jdbcType=VARCHAR},
+      </if>
+      <if test="jgkyrq != null" >
+        #{jgkyrq,jdbcType=DATE},
+      </if>
+      <if test="jgjyrq != null" >
+        #{jgjyrq,jdbcType=DATE},
+      </if>
+      <if test="sxh != null" >
+        #{sxh,jdbcType=DECIMAL},
+      </if>
+      <if test="jbjgdm != null" >
+        #{jbjgdm,jdbcType=VARCHAR},
+      </if>
+      <if test="jbgydm != null" >
+        #{jbgydm,jdbcType=VARCHAR},
+      </if>
+      <if test="jbrq != null" >
+        #{jbrq,jdbcType=DATE},
+      </if>
+      <if test="yxbz != null" >
+        #{yxbz,jdbcType=VARCHAR},
+      </if>
+      <if test="byzd1 != null" >
+        #{byzd1,jdbcType=VARCHAR},
+      </if>
+      <if test="byzd2 != null" >
+        #{byzd2,jdbcType=DECIMAL},
+      </if>
+      <if test="byzd3 != null" >
+        #{byzd3,jdbcType=DATE},
+      </if>
+      <if test="byzd4 != null" >
+        #{byzd4,jdbcType=VARCHAR},
+      </if>
+      <if test="byzd5 != null" >
+        #{byzd5,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ly.model.Og001Example" resultType="java.lang.Integer" >
+    select count(*) from OG001
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update OG001
+    <set >
+      <if test="record.jgdm != null" >
+        JGDM = #{record.jgdm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cszxdm != null" >
+        CSZXDM = #{record.cszxdm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jgmc != null" >
+        JGMC = #{record.jgmc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jgjc != null" >
+        JGJC = #{record.jgjc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jgjce != null" >
+        JGJCE = #{record.jgjce,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jgdz != null" >
+        JGDZ = #{record.jgdz,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lxdh != null" >
+        LXDH = #{record.lxdh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.youbian != null" >
+        YOUBIAN = #{record.youbian,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jglx != null" >
+        JGLX = #{record.jglx,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jgxz != null" >
+        JGXZ = #{record.jgxz,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jgsx != null" >
+        JGSX = #{record.jgsx,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jgzt != null" >
+        JGZT = #{record.jgzt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jgkyrq != null" >
+        JGKYRQ = #{record.jgkyrq,jdbcType=DATE},
+      </if>
+      <if test="record.jgjyrq != null" >
+        JGJYRQ = #{record.jgjyrq,jdbcType=DATE},
+      </if>
+      <if test="record.sxh != null" >
+        SXH = #{record.sxh,jdbcType=DECIMAL},
+      </if>
+      <if test="record.jbjgdm != null" >
+        JBJGDM = #{record.jbjgdm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jbgydm != null" >
+        JBGYDM = #{record.jbgydm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jbrq != null" >
+        JBRQ = #{record.jbrq,jdbcType=DATE},
+      </if>
+      <if test="record.yxbz != null" >
+        YXBZ = #{record.yxbz,jdbcType=VARCHAR},
+      </if>
+      <if test="record.byzd1 != null" >
+        BYZD1 = #{record.byzd1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.byzd2 != null" >
+        BYZD2 = #{record.byzd2,jdbcType=DECIMAL},
+      </if>
+      <if test="record.byzd3 != null" >
+        BYZD3 = #{record.byzd3,jdbcType=DATE},
+      </if>
+      <if test="record.byzd4 != null" >
+        BYZD4 = #{record.byzd4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.byzd5 != null" >
+        BYZD5 = #{record.byzd5,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update OG001
+    set JGDM = #{record.jgdm,jdbcType=VARCHAR},
+      CSZXDM = #{record.cszxdm,jdbcType=VARCHAR},
+      JGMC = #{record.jgmc,jdbcType=VARCHAR},
+      JGJC = #{record.jgjc,jdbcType=VARCHAR},
+      JGJCE = #{record.jgjce,jdbcType=VARCHAR},
+      JGDZ = #{record.jgdz,jdbcType=VARCHAR},
+      LXDH = #{record.lxdh,jdbcType=VARCHAR},
+      YOUBIAN = #{record.youbian,jdbcType=VARCHAR},
+      JGLX = #{record.jglx,jdbcType=VARCHAR},
+      JGXZ = #{record.jgxz,jdbcType=VARCHAR},
+      JGSX = #{record.jgsx,jdbcType=VARCHAR},
+      JGZT = #{record.jgzt,jdbcType=VARCHAR},
+      JGKYRQ = #{record.jgkyrq,jdbcType=DATE},
+      JGJYRQ = #{record.jgjyrq,jdbcType=DATE},
+      SXH = #{record.sxh,jdbcType=DECIMAL},
+      JBJGDM = #{record.jbjgdm,jdbcType=VARCHAR},
+      JBGYDM = #{record.jbgydm,jdbcType=VARCHAR},
+      JBRQ = #{record.jbrq,jdbcType=DATE},
+      YXBZ = #{record.yxbz,jdbcType=VARCHAR},
+      BYZD1 = #{record.byzd1,jdbcType=VARCHAR},
+      BYZD2 = #{record.byzd2,jdbcType=DECIMAL},
+      BYZD3 = #{record.byzd3,jdbcType=DATE},
+      BYZD4 = #{record.byzd4,jdbcType=VARCHAR},
+      BYZD5 = #{record.byzd5,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>
